@@ -12,11 +12,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите строку из больших символов на испанском языке");
-        String span = in.nextLine();
-        System.out.println(span.length());
+        String span = "DREVOTEÑEUGENEVLADIMIROVICH";//in.nextLine();
+        System.out.println(span);
         System.out.println("Введите строку из больших символов на казахском языке");
-        String kaz = in.nextLine();
-        System.out.println(kaz.length());
+        String kaz = "ДРЕВОЕНЬЕВГЕНИВЛАДІМІРОВІЧ";//in.nextLine();
+        System.out.println(kaz);
 
         JFreeChart spanChart = ChartFactory.createBarChart(
                 "Количество появлений каждого символа",
@@ -83,76 +83,43 @@ public class Main {
 
         System.out.println("---\nг)\np=0.1");
 
-        spanBin = new MyMath(Alphabeth.parseToASCII(span, 's'), 0.1);
-        kazBin = new MyMath(Alphabeth.parseToASCII(kaz, 'k'), 0.1);
-        spanMath = new MyMath(Alphabeth.getSpanishSize(), span.length(), 0.1, 's');
-        kazMath = new MyMath(Alphabeth.getKazachSize(), kaz.length(), 0.1,'k');
+        spanBin.setBinIsa(0.1, Alphabeth.parseToASCII(span, 's').length());
+        kazBin.setBinIsa(0.1, Alphabeth.parseToASCII(kaz, 'k').length());
+        spanMath.setIsa(0.1,  span.length());
+        kazMath.setIsa(0.1, span.length());
+
         System.out.println("(а)исходные алфавиты");
-        System.out.format("Энтропия испанского алфавита: %s\n",
-                spanMath.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита: %s\n",
-                kazMath.getHe().toString()
-        );
         System.out.format("Кол-во информации испанского алфавита: %s\n", spanMath.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита: %s\n", kazMath.getIsa().toString());
         System.out.println("(б)");
-        System.out.format("Энтропия испанского алфавита в ASCII: %s\n",
-                spanBin.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита в ASCII: %s\n",
-                kazBin.getHe().toString()
-        );
         System.out.format("Кол-во информации испанского алфавита (bin): %s\n", spanBin.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита (bin): %s\n", kazBin.getIsa().toString());
 
         System.out.println("\np=0.5");
 
-        spanBin = new MyMath(Alphabeth.parseToASCII(span, 's'), 0.5);
-        kazBin = new MyMath(Alphabeth.parseToASCII(kaz, 'k'), 0.5);
-        spanMath = new MyMath(Alphabeth.getSpanishSize(), span.length(), 0.5, 's');
-        kazMath = new MyMath(Alphabeth.getKazachSize(), kaz.length(), 0.5,'k');
+        spanBin.setBinIsa(0.5, Alphabeth.parseToASCII(span, 's').length());
+        kazBin.setBinIsa(0.5, Alphabeth.parseToASCII(kaz, 'k').length());
+        spanMath.setIsa(0.5,  span.length());
+        kazMath.setIsa(0.5, span.length());
+
         System.out.println("(а)исходные алфавиты");
-        System.out.format("Энтропия испанского алфавита: %s\n",
-                spanMath.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита: %s\n",
-                kazMath.getHe().toString()
-        );
         System.out.format("Кол-во информации испанского алфавита: %s\n", spanMath.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита: %s\n", kazMath.getIsa().toString());
+
         System.out.println("(б)");
-        System.out.format("Энтропия испанского алфавита в ASCII: %s\n",
-                spanBin.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита в ASCII: %s\n",
-                kazBin.getHe().toString()
-        );
         System.out.format("Кол-во информации испанского алфавита (bin): %s\n", spanBin.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита (bin): %s\n", kazBin.getIsa().toString());
 
         System.out.println("\np=1.0");
 
-        spanBin = new MyMath(Alphabeth.parseToASCII(span, 's'), 0.999);
-        kazBin = new MyMath(Alphabeth.parseToASCII(kaz, 'k'), 0.999);
-        spanMath = new MyMath(Alphabeth.getSpanishSize(), span.length(), 0.999, 's');
-        kazMath = new MyMath(Alphabeth.getKazachSize(), kaz.length(), 0.999,'k');
-        System.out.println("(а)исходные алфавиты");
-        System.out.format("Энтропия испанского алфавита: %s\n",
-                spanMath.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита: %s\n",
-                kazMath.getHe().toString()
-        );
-        System.out.println("(б)");
+        spanBin.setBinIsa(0.999, Alphabeth.parseToASCII(span, 's').length());
+        kazBin.setBinIsa(0.999, Alphabeth.parseToASCII(kaz, 'k').length());
+        spanMath.setIsa(1.0,  span.length());
+        kazMath.setIsa(1.0, span.length());
+
         System.out.format("Кол-во информации испанского алфавита: %s\n", spanMath.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита: %s\n", kazMath.getIsa().toString());
-        System.out.format("Энтропия испанского алфавита в ASCII: %s\n",
-                spanBin.getHe().toString()
-        );
-        System.out.format("Энтропия казахского алфавита в ASCII: %s\n",
-                kazBin.getHe().toString()
-        );
+
         System.out.format("Кол-во информации испанского алфавита (bin): %s\n", spanBin.getIsa().toString());
         System.out.format("Кол-во информации казахского алфавита (bin): %s\n", kazBin.getIsa().toString());
 

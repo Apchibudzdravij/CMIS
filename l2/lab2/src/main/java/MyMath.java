@@ -38,6 +38,16 @@ public class MyMath {
         Isa = He * bin.length();
     }
 
+    public void setIsa(Double err, int len) {
+        double NHe = 1 - (0.000-((err)*(Math.log(err)/Math.log(2)))-((1.000-err)*(Math.log(1-err)/Math.log(2))));
+        Isa = NHe * len;
+    }
+    public void setBinIsa(Double err, int len) {
+        double NHe = err == 0.999? He - (0.000-((err)*(Math.log(err)/Math.log(2)))-((1.000-err)*(Math.log(1-err)/Math.log(2)))) : 1 - (0.000-((err)*(Math.log(err)/Math.log(2)))-((1.000-err)*(Math.log(1-err)/Math.log(2))));
+        Isa = NHe * len;
+    }
+
+
     public Double getHa() {
         return Ha;
     }
